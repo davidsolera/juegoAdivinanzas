@@ -213,15 +213,14 @@ public void interfazPalEnc(){
                                                                     BufferedWriter br = new BufferedWriter(fw);
 
 
-                                                                    br.newLine();
-                                                                    br.write("Jugador: "+nombre+" Edad: "+edad+" Partidas ganadas: "+partidasGanadas+" Partidas perdidas: "+partidasPerdidas);
+                                                                    br.write(nombre+";"+edad+";"+partidasGanadas+";"+partidasPerdidas);
                                                                     br.close();
                                                             }
                                                             else{
                                                                     FileWriter fw = new FileWriter (juegoencPalabrasEdenadas, true);
                                                                     BufferedWriter br = new BufferedWriter(fw);
 
-                                                                    br.write("Jugador: "+nombre+" Edad: "+edad+" Partidas ganadas: "+partidasGanadas+" Partidas perdidas: "+partidasPerdidas);
+                                                                    br.write(nombre+";"+edad+";"+partidasGanadas+";"+partidasPerdidas);
                                                                     br.newLine();
 
                                                                     br.close();

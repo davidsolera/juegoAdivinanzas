@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Jugadores {
-    
+private int contador=0;
 
 	
 	public void interfazJugadores(){
@@ -66,11 +66,14 @@ public class Jugadores {
 		panel1.add(edadJugador);
 		panel1.add(edadIn);	
 		
+                panel1.add(partGanadas);
+		panel1.add(partGanadasIn);
+                
+                
 		panel1.add(partPerdidas);
 		panel1.add(partPerdidasIn);	
 		
-		panel1.add(partGanadas);
-		panel1.add(partGanadasIn);	
+	
 		
 		panel1.add(salir);
 		panel1.add(fecha);	
@@ -96,14 +99,14 @@ public class Jugadores {
 		
 		
 		
-Jugadores jugador[] = new Jugadores[ Integer.valueOf(nJugadoresIn.getText())];
+
 
 	
 		try{
 			numJugadores.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					
-					final int numeroJug = Integer.valueOf(nJugadoresIn.getText());
+					int numeroJug = Integer.valueOf(nJugadoresIn.getText());
                                         numJugadores.setEnabled(false);
                                         nJugadoresIn.setEnabled(false);
 				}
@@ -113,29 +116,56 @@ Jugadores jugador[] = new Jugadores[ Integer.valueOf(nJugadoresIn.getText())];
 			
 			catch(Exception e){}
                 
-                
+             
                 try{
 			nomJugador.addActionListener(new ActionListener(){
+                            
 				public void actionPerformed(ActionEvent e){
-
-                                        nombre = nomJugadorIn.getText();
-					edad=Integer.valueOf(edadIn.getText());
-					partidasGanadas=Integer.valueOf(partGanadasIn.getText());
-					partidasPerdidas=Integer.valueOf(partPerdidasIn.getText());
-					
-                                        
-                                         
-                                        jugador[i] = new Jugadores(nombre, edad, partidasGanadas, partidasPerdidas);    
-                                          
-                                       
                                    
-                                    
-                                    
-				}
+                                    if(contador<Integer.valueOf(nJugadoresIn.getText())){
 
+                                                nombre = nomJugadorIn.getText();
+                                                edad=Integer.valueOf(edadIn.getText());
+                                                partidasGanadas=Integer.valueOf(partGanadasIn.getText());
+                                                partidasPerdidas=Integer.valueOf(partPerdidasIn.getText());
+
+                                                try{
+                                                File ficheroJugadores = new File("jugadores.txt");
+                                                if(ficheroJugadores.exists()){	
+                                                        FileWriter fw = new FileWriter (ficheroJugadores, true);
+                                                        BufferedWriter br = new BufferedWriter(fw);
+                                                        br.newLine();
+                                                        br.write(nombre+";"+edad+";"+partidasGanadas+";"+partidasPerdidas);						
+                                                        br.close();
+                                                        
+
+                                                }
+                                                else{
+                                                        FileWriter fw = new FileWriter (ficheroJugadores, true);
+                                                        BufferedWriter br = new BufferedWriter(fw);					
+                                                        br.write(nombre+";"+edad+";"+partidasGanadas+";"+partidasPerdidas);
+                                                        br.newLine();
+
+                                                        br.close();
+
+
+                                                }
+
+                                        }catch(Exception ex){}
+                                         contador++;       
+                                    }else{
+                                        nomJugadorIn.setEnabled(false);
+                                        edadIn.setEnabled(false);
+                                        partGanadasIn.setEnabled(false);
+                                        partPerdidasIn.setEnabled(false);
+                                    
+                                    }
+                                }
+                                 
+                               
 			});
 			}
-			
+                                
 			catch(Exception e){}
                 
                 
