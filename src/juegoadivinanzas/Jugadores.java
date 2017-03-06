@@ -6,6 +6,9 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,17 +17,17 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Jugadores {
-	
-	
+    
+
 	
 	public void interfazJugadores(){
 		
 		//************************INICIO****INTERFAZ**************************************************************************
-		
+
 		JFrame principal = new JFrame ("Juego Adivinanzas");
 
 		
-		JLabel titulo = new JLabel ("Añadir Jugadores");
+		JLabel titulo = new JLabel ("Aï¿½adir Jugadores");
 		//Recojo la fuente que se esta utilizando actualmente.
 		Font auxFont=titulo.getFont();
 
@@ -32,28 +35,29 @@ public class Jugadores {
 		titulo.setFont(new Font(auxFont.getFontName(), auxFont.getStyle(), 30));
 		JLabel hueco = new JLabel ("                 ");
 
-		JButton numJugadores = new JButton ("Introduce el numero de jugadores");
+		final JButton numJugadores = new JButton ("Introduce el numero de jugadores");
 		final JTextField nJugadoresIn = new JTextField();	
 
-		JButton nomJugador = new JButton ("Introduce el nombre del jugador");
+		final JButton nomJugador = new JButton ("Introduce el nombre del jugador");
 		final JTextField nomJugadorIn = new JTextField();	
 
-		JButton edadJugador = new JButton ("Introduce su edad");
+		final JButton edadJugador = new JButton ("Introduce su edad");
 		final JTextField edadIn = new JTextField();	
 
-		JButton partPerdidas = new JButton ("Introduce el numero de partidas que ha perdido");
+		final JButton partPerdidas = new JButton ("Introduce el numero de partidas que ha perdido");
 		final JTextField partPerdidasIn = new JTextField();	
 
-		JButton partGanadas = new JButton ("Introduce el numero de partidas que ha ganado");
+		final JButton partGanadas = new JButton ("Introduce el numero de partidas que ha ganado");
 		final JTextField partGanadasIn = new JTextField();	
 
-		JButton salir = new JButton ("Salir");
-		JLabel fecha = new JLabel ("hora actual");
+		final JButton salir = new JButton ("Salir");
+		final JLabel fecha = new JLabel ("hora actual");
 		
 		
 		JPanel panel1 = new JPanel (new GridLayout(7,2));
 
-		panel1.add(numJugadores);
+		
+                panel1.add(numJugadores);
 		panel1.add(nJugadoresIn);	
 
 		panel1.add(nomJugador);
@@ -92,20 +96,52 @@ public class Jugadores {
 		
 		
 		
-	
+Jugadores jugador[] = new Jugadores[ Integer.valueOf(nJugadoresIn.getText())];
+
 	
 		try{
 			numJugadores.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					
-					int numeroJug = Integer.valueOf(nJugadoresIn.getText());
-
+					final int numeroJug = Integer.valueOf(nJugadoresIn.getText());
+                                        numJugadores.setEnabled(false);
+                                        nJugadoresIn.setEnabled(false);
 				}
 
 			});
 			}
 			
 			catch(Exception e){}
+                
+                
+                try{
+			nomJugador.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+
+                                        nombre = nomJugadorIn.getText();
+					edad=Integer.valueOf(edadIn.getText());
+					partidasGanadas=Integer.valueOf(partGanadasIn.getText());
+					partidasPerdidas=Integer.valueOf(partPerdidasIn.getText());
+					
+                                        
+                                         
+                                        jugador[i] = new Jugadores(nombre, edad, partidasGanadas, partidasPerdidas);    
+                                          
+                                       
+                                   
+                                    
+                                    
+				}
+
+			});
+			}
+			
+			catch(Exception e){}
+                
+                
+//************************FIN****INTERFAZ**************************************************************************
+
+                
 		
 }
 	

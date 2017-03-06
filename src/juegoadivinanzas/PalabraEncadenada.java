@@ -43,7 +43,7 @@ public void interfazPalEnc(){
 			JFrame principal = new JFrame ("Juego Adivinanzas");
 
 			
-			JLabel titulo = new JLabel ("Añadir Jugadores");
+			JLabel titulo = new JLabel ("Aï¿½adir Jugadores");
 			//Recojo la fuente que se esta utilizando actualmente.
 			Font auxFont=titulo.getFont();
 
@@ -57,18 +57,18 @@ public void interfazPalEnc(){
 			final JButton palabra = new JButton ("Introduce una palabra");
 			final JTextField palabraIn = new JTextField();	
 
-			JButton palabra2 = new JButton ("Palabra que comienze por la ultima letra de la anterior");
+			final JButton palabra2 = new JButton ("Palabra que comienze por la ultima letra de la anterior");
 			final JTextField palabra2In = new JTextField();	
 
-			JButton nomJug = new JButton ("Introduce el nombre del jugador");
+			final JButton nomJug = new JButton ("Introduce los datos del jugador");
 			final JTextField nomJugIn = new JTextField();	
 			
-			JButton edadJugador = new JButton ("Introduce su edad");
+			final JButton edadJugador = new JButton (" ");
 			final JTextField edadIn = new JTextField();	
 
 	
-			JButton salir = new JButton ("Salir");
-			JLabel fecha = new JLabel ("hora actual");
+			final JButton salir = new JButton ("Salir");
+			final JLabel fecha = new JLabel ("hora actual");
 			
 			
 			JPanel panel1 = new JPanel (new GridLayout(7,2));
@@ -81,19 +81,19 @@ public void interfazPalEnc(){
 
 			panel1.add(palabra2);
 			panel1.add(palabra2In);	
-			
-			panel1.add(edadJugador);
-			panel1.add(edadIn);	
-			
 			panel1.add(nomJug);
-			panel1.add(nomJugIn);	
-			
+			panel1.add(nomJugIn);
+                        
 			panel1.add(edadJugador);
 			panel1.add(edadIn);	
+			
+				
+			
 			
 			panel1.add(salir);
 			panel1.add(fecha);	
 			
+                       
 		
 			
 			//panel1.add(panel11);
@@ -112,13 +112,17 @@ public void interfazPalEnc(){
 			principal.setResizable(false);
 			//principal.pack();
 
-			
-			
+			nomJug.setEnabled(false);
+			nomJugIn.setEnabled(false);
+			edadJugador.setEnabled(false);
+			edadIn.setEnabled(false);
+
 			try{
 				numeroPartidas.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 						
 						partidasElegidas=Integer.valueOf(numeroPartidasIn.getText());
+                                                numeroPartidasIn.setEnabled(false);
 					}
 
 				});
@@ -133,6 +137,7 @@ public void interfazPalEnc(){
 						
 						palabra1=palabraIn.getText();
 						palabra.setEnabled(false);
+                                                
 					}
 
 				});
@@ -161,20 +166,31 @@ public void interfazPalEnc(){
 							
 							palabraIn.setText(String.valueOf(palabraIn));
 							palabra2In.setBackground(new Color(255,255,255));
-							hr.muestra("la palabra es valida, introduce otra palabra.");
 							partidasGanadas++;
 							palabra1=parabraIn;
+                                                        palabraIn.setText(palabra1);                                             
 							partidasJugadas++;
 						}
-						//si no son iguales se suma i a partidasPerdidas
+                                                
+                                                //si no son iguales se suma i a partidasPerdidas
 						else{
 							
 							palabra2In.setBackground(new Color(255,0,0)); //("la palabra NO comienza por la misma letra que la final de " + palabra1);
 							partidasPerdidas++;
-							partidasJugadas--;
 						}
 						
-						
+						if(partidasElegidas==partidasJugadas){
+                                                    numeroPartidas.setEnabled(false);
+                                                    numeroPartidasIn.setEnabled(false);
+                                                    palabra.setEnabled(false);
+                                                    palabraIn.setEnabled(false);
+                                                    palabra2.setEnabled(false);
+                                                    palabra2In.setEditable(false);
+                                                    nomJug.setEnabled(true);
+                                                    nomJugIn.setEnabled(true);
+                                                    edadJugador.setEnabled(true);
+                                                    edadIn.setEnabled(true);
+                                                }
 						
 						
 						
@@ -184,7 +200,67 @@ public void interfazPalEnc(){
 				}
 				
 				catch(Exception e){}
+                        
+                                try{
+				nomJug.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+                                                    nombre=nomJugIn.getText();
+                                                    edad=Integer.valueOf(edadIn.getText());
+                                                    try{
+                                                            File juegoencPalabrasEdenadas = new File("juegoencPalabrasEdenadas.txt");
+                                                            if(juegoencPalabrasEdenadas.exists()){	
+                                                                    FileWriter fw = new FileWriter (juegoencPalabrasEdenadas, true);
+                                                                    BufferedWriter br = new BufferedWriter(fw);
+
+
+                                                                    br.newLine();
+                                                                    br.write("Jugador: "+nombre+" Edad: "+edad+" Partidas ganadas: "+partidasGanadas+" Partidas perdidas: "+partidasPerdidas);
+                                                                    br.close();
+                                                            }
+                                                            else{
+                                                                    FileWriter fw = new FileWriter (juegoencPalabrasEdenadas, true);
+                                                                    BufferedWriter br = new BufferedWriter(fw);
+
+                                                                    br.write("Jugador: "+nombre+" Edad: "+edad+" Partidas ganadas: "+partidasGanadas+" Partidas perdidas: "+partidasPerdidas);
+                                                                    br.newLine();
+
+                                                                    br.close();
+                                                                                
+
+                                                            }
+                                                            
+                                                            
+                                                    }catch(Exception ex){}
+                                            
+                                                    nomJug.setEnabled(false);
+                                                    nomJugIn.setEnabled(false);
+                                                    edadJugador.setEnabled(false);
+                                                    edadIn.setEnabled(false);
+					}
+
+				});
+				}
+				
+				catch(Exception e){}
+                        
+                        
+                        try{
+			salir.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					
+					System.exit(0);
+					
+				}
+
+			});
+			}
+			
+			catch(Exception e){}
 	}
+
+                
+
+
 //Comienza el juego
 	public void encadenada(){
 		

@@ -62,7 +62,7 @@ static PalabraEncadenada pe = new PalabraEncadenada();
 		gbc.gridx = 1;
 		gbc.gridy = 0;
 		gbc.anchor = GridBagConstraints.NORTH;
-	    principal.add (tituloPrincipal,gbc);
+                principal.add (tituloPrincipal,gbc);
 		
 		gbc.gridx = 0;
 		gbc.gridy = 1;
