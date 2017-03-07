@@ -37,20 +37,14 @@ private int partidasElegidas=0;
 private int partidasJugadas=0;
 
 public void interfazPalEnc(){
-	
-	//************************INICIO****INTERFAZ**************************************************************************
-	
-			JFrame principal = new JFrame ("Juego Adivinanzas");
+    
+    //************************INICIO****INTERFAZ**************************************************************************
+		
+		JFrame principal = new JFrame ("Juego Adivinanzas");
 
-			
-			JLabel titulo = new JLabel ("A�adir Jugadores");
-			//Recojo la fuente que se esta utilizando actualmente.
-			Font auxFont=titulo.getFont();
-
-			//Aplico la fuente actual, y al final le doy el tamaño del texto...
-			titulo.setFont(new Font(auxFont.getFontName(), auxFont.getStyle(), 30));
-			JLabel hueco = new JLabel ("                 ");
-			final JButton numeroPartidas = new JButton ("Introduce el numero de partidas");
+		
+		JLabel tituloPrincipal = new JLabel ("Palabra Encadenada");
+		final JButton numeroPartidas = new JButton ("Introduce el numero de partidas");
 			final JTextField numeroPartidasIn = new JTextField();	
 			
 			
@@ -68,61 +62,138 @@ public void interfazPalEnc(){
 
 	
 			final JButton salir = new JButton ("Salir");
-			final JLabel fecha = new JLabel ("hora actual");
-			
-			
-			JPanel panel1 = new JPanel (new GridLayout(7,2));
-			
-			panel1.add(numeroPartidas);
-			panel1.add(numeroPartidasIn);	
-			
-			panel1.add(palabra);
-			panel1.add(palabraIn);	
+			final JLabel fecha = new JLabel (hr.fechaInterfaz());
 
-			panel1.add(palabra2);
-			panel1.add(palabra2In);	
-			panel1.add(nomJug);
-			panel1.add(nomJugIn);
-                        
-			panel1.add(edadJugador);
-			panel1.add(edadIn);	
-			
-				
-			
-			
-			panel1.add(salir);
-			panel1.add(fecha);	
-			
-                       
+		GridBagLayout gridbag = new GridBagLayout();
+		GridBagConstraints gbc = new GridBagConstraints();
 		
-			
-			//panel1.add(panel11);
-			//panel11.add(texto1);
-		//	panel12.add(textArea);
-			
-			principal.add(panel1);
-			
-			
-			
+		//Asignamos al JFrame el Layout que usaremos, GridBagLayout
+		
+		principal.setLayout (gridbag);
+		
+		//a�adir botones al layout
+		
+		gbc.gridx = 1;
+		gbc.gridy = 0;
+                gbc.gridwidth = 1;
+                gbc.gridheight = 1;
+                gbc.weighty = 0.1; // La fila 0 debe estirarse, le ponemos un 1.0
+                gbc.fill = GridBagConstraints.HORIZONTAL ;
+                principal.add (tituloPrincipal,gbc);
+                gbc.weighty = 0.0; // Restauramos al valor por defecto, para no afectar a los siguientes componentes.
 
-			//Hace visible el panel
-			principal.setVisible(true);
-			principal.setSize(650, 350);
-			principal.setLocationRelativeTo(null); 
-			principal.setResizable(false);
-			//principal.pack();
+		
+		gbc.gridx = 1;
+		gbc.gridy = 1;
+                gbc.gridheight = 1;     
+                gbc.weighty = 2.0; // La fila 0 debe estirarse, le ponemos un 1.0
+                gbc.fill = GridBagConstraints.NONE ;
+		principal.add (numeroPartidas,gbc);
+		
+		gbc.gridx = 2;
+		gbc.gridy = 1;
+                gbc.gridwidth = 1;
+                gbc.gridheight = 1;     
+                gbc.weighty = 2.0; // La fila 0 debe estirarse, le ponemos un 1.0
+                gbc.fill = GridBagConstraints.HORIZONTAL ;
+		principal.add (numeroPartidasIn,gbc);
+                gbc.weighty = 0.0; // Restauramos al valor por defecto, para no afectar a los siguientes componentes.
 
-			nomJug.setEnabled(false);
-			nomJugIn.setEnabled(false);
-			edadJugador.setEnabled(false);
-			edadIn.setEnabled(false);
+		
+                
+                gbc.gridx = 0;
+		gbc.gridy = 2;
+                gbc.gridwidth = 2;
+                gbc.weighty = 2.2; // La fila 0 debe estirarse, le ponemos un 1.0
+                gbc.fill = GridBagConstraints.BOTH;
+		principal.add (palabra,gbc);
+                gbc.weighty = 0.0; // Restauramos al valor por defecto, para no afectar a los siguientes componentes.
 
+                 
+		gbc.gridx = 2;
+		gbc.gridy = 2;
+                gbc.gridwidth = 1;
+                gbc.gridheight = 1;
+		principal.add (palabraIn,gbc);
+                
+                
+                
+		gbc.gridx = 0;
+		gbc.gridy = 3;
+                gbc.gridwidth = 2;
+                gbc.weighty = 2.2; // La fila 0 debe estirarse, le ponemos un 1.0
+                gbc.fill = GridBagConstraints.BOTH;
+		principal.add (palabra2,gbc);
+                gbc.weighty = 0.0; // Restauramos al valor por defecto, para no afectar a los siguientes componentes.
+
+		
+		
+                
+		gbc.gridx = 2;
+		gbc.gridy = 3;
+                gbc.gridwidth = 1;
+                gbc.gridheight = 1;
+		principal.add (palabra2In,gbc);
+                
+                
+		gbc.gridx = 2;
+		gbc.gridy = 3;
+                gbc.gridwidth = 1;
+                gbc.gridheight = 1;
+		principal.add (palabra2In,gbc);
+                
+		gbc.gridx = 0;
+		gbc.gridy = 4;
+                gbc.gridwidth = 1;
+                gbc.gridheight = 2;
+		principal.add (nomJug,gbc);
+                
+                gbc.gridx = 1;
+		gbc.gridy = 4;
+                gbc.gridwidth = 1;
+                gbc.gridheight = 1;
+                gbc.weighty = 1.0; // La fila 0 debe estirarse, le ponemos un 1.0
+              //  gbc.fill = GridBagConstraints.HORIZONTAL ;
+		principal.add (nomJugIn,gbc);
+                
+             
+                gbc.gridx = 1;
+		gbc.gridy = 5;
+                gbc.gridwidth = 1;
+                gbc.gridheight = 1;
+                gbc.weighty = 1.0; // La fila 0 debe estirarse, le ponemos un 1.0
+            //    gbc.fill = GridBagConstraints.HORIZONTAL ;
+		principal.add (edadIn,gbc);
+                
+		gbc.gridx = 2;
+		gbc.gridy = 4;
+                gbc.gridwidth = 1;
+                gbc.gridheight = 1;
+		principal.add (salir,gbc);
+		
+		gbc.gridx = 2;
+		gbc.gridy = 5;
+                gbc.gridwidth = 1;
+                gbc.gridheight = 1;
+                
+		principal.add (fecha,gbc);
+
+		//Hace visible el panel
+		principal.setVisible(true);
+		principal.setSize(650, 350);
+		principal.setLocationRelativeTo(null); 
+		principal.setResizable(false);
+		//principal.pack(); 
+    
+    
+    
 			try{
 				numeroPartidas.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 						
 						partidasElegidas=Integer.valueOf(numeroPartidasIn.getText());
                                                 numeroPartidasIn.setEnabled(false);
+                                                numeroPartidas.setEnabled(false);
 					}
 
 				});
@@ -165,7 +236,7 @@ public void interfazPalEnc(){
 						if(letraInicial.equals(letraFinal)&&partidasElegidas!=partidasJugadas){
 							
 							palabraIn.setText(String.valueOf(palabraIn));
-							palabra2In.setBackground(new Color(255,255,255));
+							palabra2In.setBackground(Color.green);
 							partidasGanadas++;
 							palabra1=parabraIn;
                                                         palabraIn.setText(palabra1);                                             
@@ -212,14 +283,14 @@ public void interfazPalEnc(){
                                                                     FileWriter fw = new FileWriter (juegoencPalabrasEdenadas, true);
                                                                     BufferedWriter br = new BufferedWriter(fw);
 
-
+                                                                    br.newLine();    
                                                                     br.write(nombre+";"+edad+";"+partidasGanadas+";"+partidasPerdidas);
                                                                     br.close();
                                                             }
                                                             else{
                                                                     FileWriter fw = new FileWriter (juegoencPalabrasEdenadas, true);
                                                                     BufferedWriter br = new BufferedWriter(fw);
-
+                                                                    
                                                                     br.write(nombre+";"+edad+";"+partidasGanadas+";"+partidasPerdidas);
                                                                     br.newLine();
 
@@ -259,7 +330,7 @@ public void interfazPalEnc(){
 
                 
 
-
+/*Ejecucion en terminal
 //Comienza el juego
 	public void encadenada(){
 		
@@ -343,5 +414,5 @@ public void interfazPalEnc(){
 	}
 	
 	
-
+        */
 }

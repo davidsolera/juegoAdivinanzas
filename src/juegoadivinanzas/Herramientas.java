@@ -6,8 +6,11 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,6 +24,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.Player;
  
 class Herramientas{
 
@@ -222,7 +227,26 @@ class Herramientas{
 		
 		
 	}
-			
+        public String fechaInterfaz(){
+		String fechaFinal=("");
+                
+                    Date fecha = new Date();
+                    SimpleDateFormat formateador;
+                    SimpleDateFormat formateador2;
+
+                    formateador = new SimpleDateFormat ("dd/MM/yy");
+                    formateador2 = new SimpleDateFormat ("HH:mm:ss");
+
+                    muestra("La fecha actual es: "+formateador.format(fecha));
+                    muestra("La hora actual es: "+formateador2.format(fecha));
+                   
+                fechaFinal = formateador.format(fecha)+"\n";
+		fechaFinal = fechaFinal+formateador2.format(fecha);
+
+		return fechaFinal;
+		
+		
+	}
 	public void ventanaPrincipal(){
 		//-------------------------------------------------------------------------------------------------------------
 				//creo la ventana
@@ -355,4 +379,27 @@ class Herramientas{
 		
 	}
 
+        
+        public void iniciarMusica(){
+            try {
+                FileInputStream fis;
+                Player player;
+                fis = new FileInputStream("musicaRelax.wav");
+                BufferedInputStream bis = new BufferedInputStream(fis);
+
+                player = new Player(bis); // Llamada a constructor de la clase Player
+                player.play();          // Llamada al método play
+            } catch (JavaLayerException e) {
+                e.printStackTrace();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            
+            
+            
+        }
+        
+        
+        
+        
 }

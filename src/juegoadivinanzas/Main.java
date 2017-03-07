@@ -1,5 +1,4 @@
 package juegoAdivinanzas;
-
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -8,14 +7,19 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.ImageIcon;
+import java.io.File;
+import java.applet.Applet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+
+
+
+
 
 public class Main {
 	
@@ -26,14 +30,16 @@ static Jugadores jg = new Jugadores(null, eleccion1, eleccion1, eleccion1);
 static JuegoPalabras jp = new JuegoPalabras();
 static JuegoNumeros jn = new JuegoNumeros();
 static PalabraEncadenada pe = new PalabraEncadenada();
-
 	public static void main(String[] args) {
 		
 		//************************INICIO****INTERFAZ**************************************************************************
+            
 		
 		JFrame principal = new JFrame ("Juego Adivinanzas");
+               
+                
+                JButton play = new JButton();
 
-		
 		JLabel tituloPrincipal = new JLabel ("Juego Adivinanzas");
 		//Recojo la fuente que se esta utilizando actualmente.
 		Font auxFont=tituloPrincipal.getFont();
@@ -41,12 +47,12 @@ static PalabraEncadenada pe = new PalabraEncadenada();
 		//Aplico la fuente actual, y al final le doy el tamaño del texto...
 		tituloPrincipal.setFont(new Font(auxFont.getFontName(), auxFont.getStyle(), 30));
 		
-		JButton adJug = new JButton ("A�adir Jugador");
+		JButton adJug = new JButton ("Agregar Jugadores");
 		JButton adivinaPalabra = new JButton ("Adivina la Palabra");
 		JButton adivinaNum = new JButton ("Adivina el Numero");
 		JButton palabraEncadenada = new JButton ("Palabra Encadenada");
 		JButton salir = new JButton ("Salir");
-		JLabel fecha = new JLabel ("hora actual");
+		JLabel fecha = new JLabel (hr.fechaInterfaz());
 
 		GridBagLayout gridbag = new GridBagLayout();
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -58,40 +64,62 @@ static PalabraEncadenada pe = new PalabraEncadenada();
 		principal.setLayout (gridbag);
 		
 		//a�adir botones al layout
-		
+                
 		gbc.gridx = 1;
 		gbc.gridy = 0;
-		gbc.anchor = GridBagConstraints.NORTH;
+                gbc.gridwidth = 1;
+                gbc.gridheight = 1;
+                gbc.weighty = 0.1; // La fila 0 debe estirarse, le ponemos un 1.0
+                gbc.fill = GridBagConstraints.HORIZONTAL ;
                 principal.add (tituloPrincipal,gbc);
 		
+                
+                
 		gbc.gridx = 0;
-		gbc.gridy = 1;
-		gbc.anchor = GridBagConstraints.SOUTHWEST;
-		principal.add (adJug,gbc);
+		gbc.gridy = 1;gbc.gridwidth = 1;
+                gbc.gridheight = 1;
+                gbc.weighty = 0.1; // La fila 0 debe estirarse, le ponemos un 1.0
+                gbc.fill = GridBagConstraints.HORIZONTAL ;
+                principal.add (adJug,gbc);
 		
 		gbc.gridx = 2;
 		gbc.gridy = 1;
-		gbc.anchor = GridBagConstraints.SOUTHEAST;
+                gbc.gridwidth = 1;
+                gbc.gridheight = 1;
+                gbc.weighty = 0.1; // La fila 0 debe estirarse, le ponemos un 1.0
+                gbc.fill = GridBagConstraints.HORIZONTAL ;
 		principal.add (adivinaPalabra,gbc);
 		
 		gbc.gridx = 0;
 		gbc.gridy = 4;
-		gbc.anchor = GridBagConstraints.CENTER;
+                gbc.gridwidth = 1;
+                gbc.gridheight = 1;
+                gbc.weighty = 0.1; // La fila 0 debe estirarse, le ponemos un 1.0
+                gbc.fill = GridBagConstraints.HORIZONTAL ;
 		principal.add (adivinaNum,gbc);
 		
 		gbc.gridx = 2;
 		gbc.gridy = 4;
-		gbc.anchor = GridBagConstraints.CENTER;
+                gbc.gridwidth = 1;
+                gbc.gridheight = 1;
+                gbc.weighty = 0.1; // La fila 0 debe estirarse, le ponemos un 1.0
+                gbc.fill = GridBagConstraints.HORIZONTAL ;
 		principal.add (palabraEncadenada,gbc);
 		
 		gbc.gridx = 1;
 		gbc.gridy = 5;
-		gbc.anchor = GridBagConstraints.CENTER;
+                gbc.gridwidth = 1;
+                gbc.gridheight = 1;
+                gbc.weighty = 0.1; // La fila 0 debe estirarse, le ponemos un 1.0
+                gbc.fill = GridBagConstraints.HORIZONTAL ;
 		principal.add (salir,gbc);
 		
 		gbc.gridx = 1;
 		gbc.gridy = 6;
-		gbc.anchor = GridBagConstraints.CENTER;
+                gbc.gridwidth = 1;
+                gbc.gridheight = 1;
+                gbc.weighty = 0.1; // La fila 0 debe estirarse, le ponemos un 1.0
+                gbc.fill = GridBagConstraints.CENTER ;
 		principal.add (fecha,gbc);
 
 		//Hace visible el panel
@@ -101,8 +129,8 @@ static PalabraEncadenada pe = new PalabraEncadenada();
 		principal.setResizable(false);
 		//principal.pack();
 		
-	
-	
+                        
+                
 		try{
 			adJug.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
@@ -119,7 +147,7 @@ static PalabraEncadenada pe = new PalabraEncadenada();
 			adivinaPalabra.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					
-					int eleccion1 = 2;
+					jp.interfazJuegoPalabras();
 					
 				}
 
@@ -133,7 +161,7 @@ static PalabraEncadenada pe = new PalabraEncadenada();
 			adivinaNum.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					
-					int eleccion1 = 3;
+					jn.interfazJuegoNumeros();
 					
 				}
 
@@ -169,7 +197,7 @@ static PalabraEncadenada pe = new PalabraEncadenada();
 			
 			catch(Exception e){}
 			
-			
+	/*ejecucion en terminal		
 		do{	
 			hr.transicion();
 			hr.mostrarFecha();
@@ -233,7 +261,7 @@ static PalabraEncadenada pe = new PalabraEncadenada();
 						
 				}
 			
-		
+		*/
 	}
 
 }

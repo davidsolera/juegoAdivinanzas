@@ -27,31 +27,30 @@ private int contador=0;
 		JFrame principal = new JFrame ("Juego Adivinanzas");
 
 		
-		JLabel titulo = new JLabel ("A�adir Jugadores");
+		JLabel titulo = new JLabel ("Agregar Jugadores");
 		//Recojo la fuente que se esta utilizando actualmente.
 		Font auxFont=titulo.getFont();
 
 		//Aplico la fuente actual, y al final le doy el tamaño del texto...
 		titulo.setFont(new Font(auxFont.getFontName(), auxFont.getStyle(), 30));
-		JLabel hueco = new JLabel ("                 ");
 
 		final JButton numJugadores = new JButton ("Introduce el numero de jugadores");
 		final JTextField nJugadoresIn = new JTextField();	
 
-		final JButton nomJugador = new JButton ("Introduce el nombre del jugador");
+		final JButton nomJugador = new JButton ("Introducir datos del jugador. Nombre--->");
 		final JTextField nomJugadorIn = new JTextField();	
 
 		final JButton edadJugador = new JButton ("Introduce su edad");
-		final JTextField edadIn = new JTextField();	
+		final JTextField edadIn = new JTextField("0");	
 
 		final JButton partPerdidas = new JButton ("Introduce el numero de partidas que ha perdido");
-		final JTextField partPerdidasIn = new JTextField();	
+		final JTextField partPerdidasIn = new JTextField("0");	
 
 		final JButton partGanadas = new JButton ("Introduce el numero de partidas que ha ganado");
-		final JTextField partGanadasIn = new JTextField();	
+		final JTextField partGanadasIn = new JTextField("0");	
 
 		final JButton salir = new JButton ("Salir");
-		final JLabel fecha = new JLabel ("hora actual");
+		final JLabel fecha = new JLabel (hr.fechaInterfaz());
 		
 		
 		JPanel panel1 = new JPanel (new GridLayout(7,2));
@@ -97,9 +96,11 @@ private int contador=0;
 		//principal.pack();
 
 		
-		
-		
+		edadJugador.setEnabled(false);
+                partGanadas.setEnabled(false);
+                partPerdidas.setEnabled(false);
 
+                        
 
 	
 		try{
@@ -108,7 +109,6 @@ private int contador=0;
 					
 					int numeroJug = Integer.valueOf(nJugadoresIn.getText());
                                         numJugadores.setEnabled(false);
-                                        nJugadoresIn.setEnabled(false);
 				}
 
 			});
@@ -122,8 +122,8 @@ private int contador=0;
                             
 				public void actionPerformed(ActionEvent e){
                                    
-                                    if(contador<Integer.valueOf(nJugadoresIn.getText())){
-
+                                    if(contador<Integer.valueOf(nJugadoresIn.getText())-1){
+                                        contador++;  
                                                 nombre = nomJugadorIn.getText();
                                                 edad=Integer.valueOf(edadIn.getText());
                                                 partidasGanadas=Integer.valueOf(partGanadasIn.getText());
@@ -152,13 +152,13 @@ private int contador=0;
                                                 }
 
                                         }catch(Exception ex){}
-                                         contador++;       
+                                              
                                     }else{
                                         nomJugadorIn.setEnabled(false);
-                                        edadIn.setEnabled(false);
                                         partGanadasIn.setEnabled(false);
                                         partPerdidasIn.setEnabled(false);
-                                    
+                                        edadIn.setEditable(false);
+                                        
                                     }
                                 }
                                  
@@ -167,6 +167,18 @@ private int contador=0;
 			}
                                 
 			catch(Exception e){}
+                 try{
+			salir.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					
+					System.exit(0);
+					
+				}
+
+			});
+			}
+			
+			catch(Exception e){}
                 
                 
 //************************FIN****INTERFAZ**************************************************************************
@@ -174,9 +186,6 @@ private int contador=0;
                 
 		
 }
-	
-	
-	
 	
 	
 	Herramientas hr = new Herramientas();
