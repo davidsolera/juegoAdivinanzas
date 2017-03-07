@@ -122,7 +122,7 @@ private int contador=0;
                             
 				public void actionPerformed(ActionEvent e){
                                    
-                                    if(contador<Integer.valueOf(nJugadoresIn.getText())-1){
+                                    if(contador<Integer.valueOf(nJugadoresIn.getText())){
                                         contador++;  
                                                 nombre = nomJugadorIn.getText();
                                                 edad=Integer.valueOf(edadIn.getText());
