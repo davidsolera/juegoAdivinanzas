@@ -24,8 +24,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.Player;
+
  
 class Herramientas{
 
@@ -379,27 +378,6 @@ class Herramientas{
 		
 	}
 
-        
-        public void iniciarMusica(){
-            try {
-                FileInputStream fis;
-                Player player;
-                fis = new FileInputStream("musicaRelax.wav");
-                BufferedInputStream bis = new BufferedInputStream(fis);
-
-                player = new Player(bis); // Llamada a constructor de la clase Player
-                player.play();          // Llamada al método play
-            } catch (JavaLayerException e) {
-                e.printStackTrace();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            
-            
-            
-        }
-        
-        
         
         
 }
