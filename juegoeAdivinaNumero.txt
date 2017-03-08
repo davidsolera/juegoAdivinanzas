@@ -1,1 +1,4 @@
-pruebaFinal;28;0;2
+prueba1;28;2;1
+
+pruebafinal;258;2;1
+Nombre;25;0;2

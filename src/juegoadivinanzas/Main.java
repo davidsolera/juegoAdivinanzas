@@ -39,10 +39,11 @@ static PalabraEncadenada pe = new PalabraEncadenada();
                     
                 JFrame.setDefaultLookAndFeelDecorated(true);
                 JDialog.setDefaultLookAndFeelDecorated(true);
-                UIManager.setLookAndFeel("net.sourceforge.napkinlaf.NapkinLookAndFeel");
-                //UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
-                //UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-                //UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+                
+                //UIManager.setLookAndFeel("net.sourceforge.napkinlaf.NapkinLookAndFeel");// -------------estilo papel
+                //UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");//------------------estilo metal
+                //UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");//-------estilo windows
+               UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");//--------------estilo morado
             }
             catch (Exception e){
                 e.printStackTrace();
