@@ -236,8 +236,7 @@ class Herramientas{
                     formateador = new SimpleDateFormat ("dd/MM/yy");
                     formateador2 = new SimpleDateFormat ("HH:mm:ss");
 
-                    muestra("La fecha actual es: "+formateador.format(fecha));
-                    muestra("La hora actual es: "+formateador2.format(fecha));
+                   
                    
                 fechaFinal = formateador.format(fecha)+"\n";
 		fechaFinal = fechaFinal+formateador2.format(fecha);
