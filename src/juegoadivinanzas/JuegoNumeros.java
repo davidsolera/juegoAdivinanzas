@@ -161,6 +161,10 @@ public void interfazJuegoNumeros(){
 		principal.setResizable(false);
                 
                 
+                
+                    pista.setEnabled(false);
+                    nomJug.setEnabled(false);
+                
                 //creacion de array de enteros con 50 posiciones
 		final int numero[] = new int [50];
 			
@@ -186,6 +190,8 @@ public void interfazJuegoNumeros(){
 						partidasElegidas=Integer.valueOf(numeroPartidasIn.getText());
                                                 numeroPartidas.setEnabled(false);
                                                 numeroPartidasIn.setEnabled(false);
+                                                pista.setEnabled(true);
+                                                nomJug.setEnabled(true);
                                                 //se elige una posicion aleatoria del array
                                                 numeroElegido=numero[rnd.nextInt(49)];
 			

@@ -205,8 +205,8 @@ public class JuegoPalabras {
 			
 			
 		
-        
-        
+        pista.setEnabled(false);
+        nomJug.setEnabled(false);
                              try{
 				numeroPartidas.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
@@ -214,8 +214,8 @@ public class JuegoPalabras {
 						partidasElegidas=Integer.valueOf(numeroPartidasIn.getText());
                                                 numeroPartidas.setEnabled(false);
                                                 numeroPartidasIn.setEnabled(false);
-                                                System.out.print(partidasElegidas);
-                                                
+                                                pista.setEnabled(true);
+                                                nomJug.setEnabled(true);  
                                                 
                                                 
                                                 

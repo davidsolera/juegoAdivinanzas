@@ -192,8 +192,9 @@ public void interfazPalEnc(){
 		principal.setLocationRelativeTo(null); 
 		principal.setResizable(false);
 		//principal.pack(); 
-    
-    
+    palabra.setEnabled(false);
+    palabra2.setEnabled(false);
+    nomJug.setEnabled(false);
     
 			try{
 				numeroPartidas.addActionListener(new ActionListener(){
@@ -202,6 +203,10 @@ public void interfazPalEnc(){
 						partidasElegidas=Integer.valueOf(numeroPartidasIn.getText());
                                                 numeroPartidasIn.setEnabled(false);
                                                 numeroPartidas.setEnabled(false);
+                                                palabra.setEnabled(true);
+                                                palabra2.setEnabled(true);
+                                                nomJug.setEnabled(true);
+
 					}
 
 				});
