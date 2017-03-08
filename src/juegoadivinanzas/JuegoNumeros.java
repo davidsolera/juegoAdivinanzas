@@ -36,7 +36,9 @@ public void interfazJuegoNumeros(){
             //************************INICIO****INTERFAZ**************************************************************************
 		
 		JFrame principal = new JFrame ("Juego Adivinanzas");
-
+                Color nuevoColor = new Color(167, 220, 231);
+                
+                principal.getContentPane().setBackground(nuevoColor);
 		
 		JLabel tituloPrincipal = new JLabel ("Adivina El numero");
 		//Recojo la fuente que se esta utilizando actualmente.

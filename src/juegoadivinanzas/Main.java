@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.applet.Applet;
+import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -41,9 +42,10 @@ static PalabraEncadenada pe = new PalabraEncadenada();
                 JDialog.setDefaultLookAndFeelDecorated(true);
                 
                 //UIManager.setLookAndFeel("net.sourceforge.napkinlaf.NapkinLookAndFeel");// -------------estilo papel
-                //UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");//------------------estilo metal
+                UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");//------------------estilo metal
                 //UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");//-------estilo windows
-               UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");//--------------estilo morado
+               //UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");//--------------estilo morado
+            
             }
             catch (Exception e){
                 e.printStackTrace();
@@ -53,9 +55,13 @@ static PalabraEncadenada pe = new PalabraEncadenada();
             
 		
 		JFrame principal = new JFrame ("Juego Adivinanzas");
-               
+                //Colores
+ 
+              
+                Color nuevoColor = new Color(167, 220, 231);
                 
-                JButton play = new JButton();
+                principal.getContentPane().setBackground(nuevoColor);
+
 
 		JLabel tituloPrincipal = new JLabel ("Juego Adivinanzas");
 		//Recojo la fuente que se esta utilizando actualmente.

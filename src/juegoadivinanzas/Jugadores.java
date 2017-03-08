@@ -1,5 +1,6 @@
 package juegoAdivinanzas;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -25,7 +26,8 @@ private int contador=0;
 		//************************INICIO****INTERFAZ**************************************************************************
 
 		JFrame principal = new JFrame ("Juego Adivinanzas");
-
+                
+               
 		
 		JLabel titulo = new JLabel ("Agregar Jugadores");
 		//Recojo la fuente que se esta utilizando actualmente.
@@ -54,7 +56,9 @@ private int contador=0;
 		
 		
 		JPanel panel1 = new JPanel (new GridLayout(7,2));
-
+                Color nuevoColor = new Color(167, 220, 231);
+                
+               panel1.setBackground(nuevoColor);
 		
                 panel1.add(numJugadores);
 		panel1.add(nJugadoresIn);	

@@ -41,9 +41,18 @@ public void interfazPalEnc(){
     //************************INICIO****INTERFAZ**************************************************************************
 		
 		JFrame principal = new JFrame ("Juego Adivinanzas");
-
+                Color nuevoColor = new Color(167, 220, 231);
+                
+                principal.getContentPane().setBackground(nuevoColor);
 		
 		JLabel tituloPrincipal = new JLabel ("Palabra Encadenada");
+                
+                //Recojo la fuente que se esta utilizando actualmente.
+		Font auxFont=tituloPrincipal.getFont();
+
+		//Aplico la fuente actual, y al final le doy el tamaño del texto...
+		tituloPrincipal.setFont(new Font(auxFont.getFontName(), auxFont.getStyle(), 30));
+                
 		final JButton numeroPartidas = new JButton ("Introduce el numero de partidas");
 			final JTextField numeroPartidasIn = new JTextField();	
 			
@@ -55,10 +64,9 @@ public void interfazPalEnc(){
 			final JTextField palabra2In = new JTextField();	
 
 			final JButton nomJug = new JButton ("Introduce los datos del jugador");
-			final JTextField nomJugIn = new JTextField();	
+			final JTextField nomJugIn = new JTextField("Introduce tu nombre");	
 			
-			final JButton edadJugador = new JButton (" ");
-			final JTextField edadIn = new JTextField();	
+			final JTextField edadIn = new JTextField("Introduce tu edad");	
 
 	
 			final JButton salir = new JButton ("Salir");
@@ -259,7 +267,6 @@ public void interfazPalEnc(){
                                                     palabra2In.setEditable(false);
                                                     nomJug.setEnabled(true);
                                                     nomJugIn.setEnabled(true);
-                                                    edadJugador.setEnabled(true);
                                                     edadIn.setEnabled(true);
                                                 }
 						
@@ -304,7 +311,6 @@ public void interfazPalEnc(){
                                             
                                                     nomJug.setEnabled(false);
                                                     nomJugIn.setEnabled(false);
-                                                    edadJugador.setEnabled(false);
                                                     edadIn.setEnabled(false);
 					}
 

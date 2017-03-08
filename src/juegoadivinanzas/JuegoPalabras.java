@@ -49,7 +49,9 @@ public class JuegoPalabras {
             //************************INICIO****INTERFAZ**************************************************************************
 		
 		JFrame principal = new JFrame ("Juego Adivinanzas");
-
+                Color nuevoColor = new Color(167, 220, 231);
+                
+                principal.getContentPane().setBackground(nuevoColor);
 		
 		JLabel tituloPrincipal = new JLabel ("Adivina la palabra");
 		//Recojo la fuente que se esta utilizando actualmente.
@@ -68,9 +70,9 @@ public class JuegoPalabras {
                 
 
 		final JButton nomJug = new JButton ("Introduce los datos del jugador");
-		final JTextField nomJugIn = new JTextField("Nombre");	
+		final JTextField nomJugIn = new JTextField("Introduce tu nombre");	
 			
-		final JTextField edadIn = new JTextField("edad");	
+		final JTextField edadIn = new JTextField("Introduce tu edad");	
 
 	
 		final JButton salir = new JButton ("Salir");
