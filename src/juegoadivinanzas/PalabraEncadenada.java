@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.text.Collator;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,6 +21,7 @@ import javax.swing.JTextField;
 class PalabraEncadenada {
 Herramientas hr = new Herramientas();
 JuegoPalabras jp = new JuegoPalabras();	
+Collator comparador = Collator.getInstance();
 
 private String palabra1="";
 private String parabraIn="";
@@ -195,7 +197,7 @@ public void interfazPalEnc(){
     palabra.setEnabled(false);
     palabra2.setEnabled(false);
     nomJug.setEnabled(false);
-    
+    comparador.setStrength(Collator.PRIMARY);
 			try{
 				numeroPartidas.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
@@ -221,7 +223,7 @@ public void interfazPalEnc(){
 						
 						palabra1=palabraIn.getText();
 						palabra.setEnabled(false);
-                                                
+                                                palabraIn.setEnabled(false);
 					}
 
 				});
@@ -233,7 +235,7 @@ public void interfazPalEnc(){
 				palabra2.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 						
-						//se lee la palabra a comparar con palabraIn 
+						//se lee la palabra a comparar 
 						parabraIn=palabra2In.getText();
 						
 						//se determina la longitud de la palabra 
@@ -244,38 +246,47 @@ public void interfazPalEnc(){
 						
 						//se selecciona la letra inicial de la palabra
 						letraInicial= parabraIn.substring(0, 1);
-						
-						//se comparan las palabras, si son iguales se suma a partidasGanadas y palabra1 toma el valor de palabraIn para  que se siga jugando y no se pierda la cadena
-						if(letraInicial.equals(letraFinal)&&partidasElegidas!=partidasJugadas){
-							
-							palabraIn.setText(String.valueOf(palabraIn));
-							palabra2In.setBackground(Color.green);
-							partidasGanadas++;
-							palabra1=parabraIn;
-                                                        palabraIn.setText(palabra1);                                             
-							partidasJugadas++;
-						}
                                                 
-                                                //si no son iguales se suma i a partidasPerdidas
-						else{
-							
-							palabra2In.setBackground(new Color(255,0,0)); //("la palabra NO comienza por la misma letra que la final de " + palabra1);
-							partidasPerdidas++;
-						}
+						if(comparador.equals(parabraIn, palabra1)){
+                                                   palabra2In.setText("ES IGUAL!!!");
 						
-						if(partidasElegidas==partidasJugadas){
-                                                    numeroPartidas.setEnabled(false);
-                                                    numeroPartidasIn.setEnabled(false);
-                                                    palabra.setEnabled(false);
-                                                    palabraIn.setEnabled(false);
-                                                    palabra2.setEnabled(false);
-                                                    palabra2In.setEditable(false);
-                                                    nomJug.setEnabled(true);
-                                                    nomJugIn.setEnabled(true);
-                                                    edadIn.setEnabled(true);
+						 }
+                                                else{
+                                                      //se comparan las palabras, si son iguales se suma a partidasGanadas y palabra1 toma el valor de palabraIn para  que se siga jugando y no se pierda la cadena
+                                                    if(letraInicial.equals(letraFinal)&&partidasElegidas!=partidasJugadas){
+
+                                                            palabraIn.setText(String.valueOf(palabraIn));
+                                                            palabra2In.setBackground(Color.green);
+                                                            partidasGanadas++;
+                                                            palabra1=parabraIn;
+                                                            palabraIn.setText(palabra1);                                             
+                                                            partidasJugadas++;
+                                                    }
+
+                                                    //si no son iguales se suma 1 a partidasPerdidas
+                                                    else{
+
+                                                            palabra2In.setBackground(new Color(255,0,0)); //("la palabra NO comienza por la misma letra que la final de " + palabra1);
+
+                                                            partidasPerdidas++;
+                                                    }
+
+
+                                                    if(partidasElegidas==partidasJugadas){
+                                                        numeroPartidas.setEnabled(false);
+                                                        numeroPartidasIn.setEnabled(false);
+                                                        palabra.setEnabled(false);
+                                                        palabraIn.setEnabled(false);
+                                                        palabra2.setEnabled(false);
+                                                        palabra2In.setEditable(false);
+                                                        nomJug.setEnabled(true);
+                                                        nomJugIn.setEnabled(true);
+                                                        edadIn.setEnabled(true);
+                                                    }
+                                                  
+                                                   
                                                 }
-						
-						
+                                                    
 						
 					}
 

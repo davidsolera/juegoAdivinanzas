@@ -35,7 +35,7 @@ static JuegoNumeros jn = new JuegoNumeros();
 static PalabraEncadenada pe = new PalabraEncadenada();
 	public static void main(String[] args) {
 		
-            
+            hr.reproductor();
             try{
                     
                 JFrame.setDefaultLookAndFeelDecorated(true);
