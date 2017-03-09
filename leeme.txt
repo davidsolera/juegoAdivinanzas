@@ -1,1 +1,2 @@
-Para añadir musica de fondo sustituir el fichero musicaFondo.wav, debe ser formato wav.
+﻿Para añadir musica de fondo sustituir el fichero musicaFondo.wav, debe ser formato wav.
+ O quitarlo para no tener music de fondo.
