@@ -1,23 +1,19 @@
 package juegoAdivinanzas;
 
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -46,9 +42,8 @@ class Herramientas{
                while (sonido.isRunning())
                    Thread.sleep(1000);
 
-               // Se cierra el clip.
                //sonido.close();
-           } catch (Exception e) {
+           } catch (IOException | InterruptedException | LineUnavailableException | UnsupportedAudioFileException e) {
                System.out.println("" + e);
            }
     
@@ -88,8 +83,6 @@ class Herramientas{
 	
 	}
 
-
-	
 	//menu principal
 	
 	public void menuPrincipal(){
@@ -108,7 +101,6 @@ class Herramientas{
 	}
 	
 	  
-	
 	//transicion	
 	public void transicion(){
 		for(int a=0; a<=10;a++){
@@ -158,7 +150,6 @@ class Herramientas{
 		}
 	   
 	}
-	
 	
 	//introducir jugadores
 	public void anyadirJugadores(){
@@ -217,11 +208,6 @@ class Herramientas{
 				
 				Main.main(null);
 	}	
-	
-	
-		
-		
-	
 	
 	
 	//mostrar jugadores
