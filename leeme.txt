@@ -1,0 +1,1 @@
+Para añadir musica de fondo sustituir el fichero musicaFondo.wav, debe ser formato wav.

@@ -33,7 +33,7 @@ class Herramientas{
                Clip sonido = AudioSystem.getClip();
 
                // Se carga con un fichero wav
-               sonido.open(AudioSystem.getAudioInputStream(new File("walkin6a.wav")));
+               sonido.open(AudioSystem.getAudioInputStream(new File("musicaFondo.wav")));
 
                // Comienza la reproducción
                sonido.start();
