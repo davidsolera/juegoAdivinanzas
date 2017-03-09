@@ -10,6 +10,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -221,12 +223,13 @@ public void interfazJuegoNumeros(){
                                                             pista.setText(String.valueOf("El resultado del numero multiplicado por dos es: "+numeroElegido*2+" adivina que numero es."));
                                                             partidasJugadas++;
                                                             partidasGanadas++;
+                                                            hr.reproductorAcierto();
 
                                                     }
 
                                                     else{
                                                             numeroIn.setBackground(Color.red);
-                                                        
+                                                            hr.reproductorFallo();
                                                             
                                                             partidasJugadas++;
                                                             partidasPerdidas++;
@@ -292,7 +295,13 @@ public void interfazJuegoNumeros(){
                         try{
 			salir.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					
+					hr.reproductorDespedida();
+                                    try {
+                                        Thread.sleep(1000);
+                                    } catch (InterruptedException ex) {
+                                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+					System.exit(0);
 					System.exit(0);
 					
 				}

@@ -25,8 +25,11 @@ import javax.swing.JTextField;
 
  
 class Herramientas{
+    
+private boolean estado;
 
-        public void reproductor(){
+        public  void reproductorFondo(boolean estado){
+            
             try {
                 //
                // Se obtiene un Clip de sonido
@@ -35,19 +38,99 @@ class Herramientas{
                // Se carga con un fichero wav
                sonido.open(AudioSystem.getAudioInputStream(new File("musicaFondo.wav")));
 
-               // Comienza la reproducción
-               sonido.start();
+                if(estado==true){
+                    // Comienza la reproducción
+                    sonido.loop(Clip.LOOP_CONTINUOUSLY);
+                }
+                else{
+                    sonido.stop();
+                }
 
                // Espera mientras se esté reproduciendo.
                while (sonido.isRunning())
                    Thread.sleep(1000);
 
-               //sonido.close();
+               
            } catch (IOException | InterruptedException | LineUnavailableException | UnsupportedAudioFileException e) {
                System.out.println("" + e);
            }
     
         }
+    public void reproductorFallo(){
+           try {
+                //
+               // Se obtiene un Clip de sonido
+               Clip sonido = AudioSystem.getClip();
+
+               // Se carga con un fichero wav
+               sonido.open(AudioSystem.getAudioInputStream(new File("fallo.wav")));
+
+               // Comienza la reproducción
+               sonido.start();
+              
+
+               // Espera mientras se esté reproduciendo.
+               while (sonido.isRunning())
+                   Thread.sleep(1000);
+
+               
+           } catch (IOException | InterruptedException | LineUnavailableException | UnsupportedAudioFileException e) {
+               System.out.println("" + e);
+           }
+    
+        }
+    public void reproductorAcierto(){
+            try {
+                //
+               // Se obtiene un Clip de sonido
+               Clip sonido = AudioSystem.getClip();
+
+               // Se carga con un fichero wav
+               sonido.open(AudioSystem.getAudioInputStream(new File("acierto.wav")));
+
+               // Comienza la reproducción
+               sonido.start();
+              
+
+               // Espera mientras se esté reproduciendo.
+               while (sonido.isRunning())
+                   Thread.sleep(1000);
+
+               
+           } catch (IOException | InterruptedException | LineUnavailableException | UnsupportedAudioFileException e) {
+               System.out.println("" + e);
+           }
+    
+        }
+    
+    public void reproductorDespedida(){
+           try {
+                //
+               // Se obtiene un Clip de sonido
+               Clip sonido = AudioSystem.getClip();
+
+               // Se carga con un fichero wav
+               sonido.open(AudioSystem.getAudioInputStream(new File("bye.wav")));
+
+               // Comienza la reproducción
+               sonido.start();
+              
+
+               // Espera mientras se esté reproduciendo.
+               while (sonido.isRunning())
+                   Thread.sleep(1000);
+
+               
+           } catch (IOException | InterruptedException | LineUnavailableException | UnsupportedAudioFileException e) {
+               System.out.println("" + e);
+           }
+    
+        }
+    
+    
+    
+    
+    
     
 	//introducir datos
 

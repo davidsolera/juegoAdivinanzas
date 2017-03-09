@@ -10,10 +10,13 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.text.Collator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import static juegoAdivinanzas.Main.hr;
 
 class PalabraEncadenada {
 Herramientas hr = new Herramientas();
@@ -36,7 +39,8 @@ private int partidasElegidas=0;
 private int partidasJugadas=0;
 
 public void interfazPalEnc(){
-    
+                
+
     //************************INICIO****INTERFAZ**************************************************************************
 		
 		JFrame principal = new JFrame ("Juego Adivinanzas");
@@ -258,6 +262,7 @@ public void interfazPalEnc(){
                                                             palabra1=parabraIn;
                                                             palabraIn.setText(palabra1);                                             
                                                             partidasJugadas++;
+                                                            hr.reproductorAcierto();
                                                     }
 
                                                     //si no son iguales se suma 1 a partidasPerdidas
@@ -266,6 +271,7 @@ public void interfazPalEnc(){
                                                             palabra2In.setBackground(new Color(255,0,0)); //("la palabra NO comienza por la misma letra que la final de " + palabra1);
 
                                                             partidasPerdidas++;
+                                                            hr.reproductorFallo();
                                                     }
 
 
@@ -336,7 +342,16 @@ public void interfazPalEnc(){
                         try{
 			salir.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					
+					hr.reproductorDespedida();
+                                    try {
+                                        Thread.sleep(1000);
+                                    } catch (InterruptedException ex) {
+                                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+					System.exit(0);
+                                    
+                                    
+                                    
 					System.exit(0);
 					
 				}

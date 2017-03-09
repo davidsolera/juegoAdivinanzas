@@ -6,6 +6,8 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -28,7 +30,7 @@ static JuegoNumeros jn = new JuegoNumeros();
 static PalabraEncadenada pe = new PalabraEncadenada();
 	public static void main(String[] args) {
 		
-            hr.reproductor();
+            hr.reproductorFondo(true);
             try{
                     
                 JFrame.setDefaultLookAndFeelDecorated(true);
@@ -203,7 +205,13 @@ static PalabraEncadenada pe = new PalabraEncadenada();
 		try{
 			salir.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					
+                                    
+					hr.reproductorDespedida();
+                                    try {
+                                        Thread.sleep(1000);
+                                    } catch (InterruptedException ex) {
+                                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
 					System.exit(0);
 					
 				}

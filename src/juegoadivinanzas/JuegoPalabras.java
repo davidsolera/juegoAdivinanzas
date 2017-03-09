@@ -10,6 +10,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -265,6 +267,7 @@ public class JuegoPalabras {
                                                        pista.setText(String.valueOf(muestraPista));
                                                        partidasJugadas++;
                                                        partidasGanadas++;
+                                                       hr.reproductorAcierto();
 
                                                }
 
@@ -272,6 +275,7 @@ public class JuegoPalabras {
                                                        palabraIn.setBackground(Color.red);
                                                        partidasJugadas++;
                                                        partidasPerdidas++;
+                                                       hr.reproductorFallo();
                                                }
 
                                            if(partidasElegidas==partidasJugadas){
@@ -337,7 +341,13 @@ public class JuegoPalabras {
                                 try{
                                 salir.addActionListener(new ActionListener(){
                                         public void actionPerformed(ActionEvent e){
-
+                                    hr.reproductorDespedida();
+                                    try {
+                                        Thread.sleep(1000);
+                                    } catch (InterruptedException ex) {
+                                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+					System.exit(0);
                                                 System.exit(0);
 
                                         }
