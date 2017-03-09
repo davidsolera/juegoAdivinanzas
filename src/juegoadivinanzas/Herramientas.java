@@ -32,7 +32,7 @@ class Herramientas{
 
         public void reproductor(){
             try {
-
+                //
                // Se obtiene un Clip de sonido
                Clip sonido = AudioSystem.getClip();
 
