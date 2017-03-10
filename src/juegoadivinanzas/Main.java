@@ -29,7 +29,7 @@ static JuegoPalabras jp = new JuegoPalabras();
 static JuegoNumeros jn = new JuegoNumeros();
 static PalabraEncadenada pe = new PalabraEncadenada();
 	public static void main(String[] args) {
-		
+            hr.reproducirBienvenida();
             hr.reproductorFondo();
             try{
                     

@@ -169,6 +169,29 @@ class Herramientas{
            }
     
         }
+    public void reproducirBienvenida(){
+           try {
+                //
+               // Se obtiene un Clip de sonido
+               Clip sonido = AudioSystem.getClip();
+
+               // Se carga con un fichero wav
+               sonido.open(AudioSystem.getAudioInputStream(new File("bienvenida.wav")));
+
+               // Comienza la reproducción
+               sonido.start();
+              
+
+               // Espera mientras se esté reproduciendo.
+               while (sonido.isRunning())
+                   Thread.sleep(1000);
+
+               
+           } catch (IOException | InterruptedException | LineUnavailableException | UnsupportedAudioFileException e) {
+               System.out.println("" + e);
+           }
+    
+        }
     
     
     
