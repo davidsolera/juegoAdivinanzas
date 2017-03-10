@@ -107,7 +107,7 @@ private int contador=0;
 		try{
 			numJugadores.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					
+                                        hr.reproducirBotonJuego();
 					int numeroJug = Integer.valueOf(nJugadoresIn.getText());
                                         numJugadores.setEnabled(false);
 				}
@@ -122,7 +122,7 @@ private int contador=0;
 			nomJugador.addActionListener(new ActionListener(){
                             
 				public void actionPerformed(ActionEvent e){
-                                   
+                                    hr.reproducirBotonJuego();
                                     if(contador<Integer.valueOf(nJugadoresIn.getText())){
                                         contador++;  
                                                 nombre = nomJugadorIn.getText();

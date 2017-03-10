@@ -188,7 +188,7 @@ public void interfazJuegoNumeros(){
                 try{
 				numeroPartidas.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
-						
+						hr.reproducirBotonJuego();
 						partidasElegidas=Integer.valueOf(numeroPartidasIn.getText());
                                                 numeroPartidas.setEnabled(false);
                                                 numeroPartidasIn.setEnabled(false);
@@ -210,8 +210,7 @@ public void interfazJuegoNumeros(){
 				pista.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 					
-                                           
-                                                //se lee el numero 
+                                                hr.reproducirBotonJuego();
                                                 numeroIntroducido= Integer.valueOf(numeroIn.getText());
                                                 //comprobar si numerointroducido es igual a numeroElegido sumando a la variable partidaGanada o perdida en cada caso
 
@@ -254,6 +253,8 @@ public void interfazJuegoNumeros(){
                 try{
 				nomJug.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
+                                            
+                                                    hr.reproducirBotonJuego();
                                                     nombre=nomJugIn.getText();
                                                     edad=Integer.valueOf(edadIn.getText());
                                                     try{

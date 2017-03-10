@@ -1,2 +1,4 @@
-﻿Para añadir musica de fondo sustituir el fichero musicaFondo.wav, debe ser formato wav.
- O quitarlo para no tener music de fondo.
+Los ficheros de audio deberan estar en el mismo directorio que el JuegoAdivinanzas.jar﻿
+Para añadir musica de fondo sustituir el fichero musicaFondo.wav, debe ser formato wav y tener ese mismo nombre y extension.
+De igual forma para los distintos sonidos de la aplicacion: acierto.wav bye.wav clicJuego.wav y fallo.wav.
+Si prefieres no tener ningun tipo de musica puedes en cualquier momento eliminar los ficheros de audio (todos o alguno).

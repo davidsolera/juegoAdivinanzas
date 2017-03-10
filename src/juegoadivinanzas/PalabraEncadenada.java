@@ -202,7 +202,7 @@ public void interfazPalEnc(){
 			try{
 				numeroPartidas.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
-						
+                                                hr.reproducirBotonJuego();
 						partidasElegidas=Integer.valueOf(numeroPartidasIn.getText());
                                                 numeroPartidasIn.setEnabled(false);
                                                 numeroPartidas.setEnabled(false);
@@ -221,7 +221,7 @@ public void interfazPalEnc(){
 			try{
 				palabra.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
-						
+                                                hr.reproducirBotonJuego();
 						palabra1=palabraIn.getText();
 						palabra.setEnabled(false);
                                                 palabraIn.setEnabled(false);
@@ -235,7 +235,7 @@ public void interfazPalEnc(){
 			try{
 				palabra2.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
-						
+                                        hr.reproducirBotonJuego();
 						//se lee la palabra a comparar 
 						parabraIn=palabra2In.getText();
 						
@@ -301,6 +301,7 @@ public void interfazPalEnc(){
                                 try{
 				nomJug.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
+                                                    hr.reproducirBotonJuego();
                                                     nombre=nomJugIn.getText();
                                                     edad=Integer.valueOf(edadIn.getText());
                                                     try{

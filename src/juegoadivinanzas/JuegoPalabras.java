@@ -210,7 +210,7 @@ public class JuegoPalabras {
                              try{
 				numeroPartidas.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
-						
+                                                hr.reproducirBotonJuego();
 						partidasElegidas=Integer.valueOf(numeroPartidasIn.getText());
                                                 numeroPartidas.setEnabled(false);
                                                 numeroPartidasIn.setEnabled(false);
@@ -242,7 +242,7 @@ public class JuegoPalabras {
                             try{
 				pista.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
-						
+                                                hr.reproducirBotonJuego();
                                            
                                            
                                                //se lee la palabra por teclado y se compara con la elegida aleatoriamente sumando a partidasGanadas o perdidas.
@@ -300,6 +300,7 @@ public class JuegoPalabras {
                             try{
 				nomJug.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
+                                                hr.reproducirBotonJuego();
                                                     nombre=nomJugIn.getText();
                                                     edad=Integer.valueOf(edadIn.getText());
                                                     try{

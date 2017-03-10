@@ -26,9 +26,8 @@ import javax.swing.JTextField;
  
 class Herramientas{
     
-private boolean estado;
 
-        public  void reproductorFondo(boolean estado){
+        public  void reproductorFondo(){
             
             try {
                 //
@@ -38,13 +37,11 @@ private boolean estado;
                // Se carga con un fichero wav
                sonido.open(AudioSystem.getAudioInputStream(new File("musicaFondo.wav")));
 
-                if(estado==true){
-                    // Comienza la reproducción
-                    sonido.loop(Clip.LOOP_CONTINUOUSLY);
-                }
-                else{
-                    sonido.stop();
-                }
+            
+                // Comienza la reproducción
+                sonido.loop(Clip.LOOP_CONTINUOUSLY);
+                
+              
 
                // Espera mientras se esté reproduciendo.
                while (sonido.isRunning())
@@ -126,7 +123,52 @@ private boolean estado;
            }
     
         }
+    public void reproducirBoton(){
+           try {
+                //
+               // Se obtiene un Clip de sonido
+               Clip sonido = AudioSystem.getClip();
+
+               // Se carga con un fichero wav
+               sonido.open(AudioSystem.getAudioInputStream(new File("clic.wav")));
+
+               // Comienza la reproducción
+               sonido.start();
+              
+
+               // Espera mientras se esté reproduciendo.
+               while (sonido.isRunning())
+                   Thread.sleep(1000);
+
+               
+           } catch (IOException | InterruptedException | LineUnavailableException | UnsupportedAudioFileException e) {
+               System.out.println("" + e);
+           }
     
+        }
+    public void reproducirBotonJuego(){
+           try {
+                //
+               // Se obtiene un Clip de sonido
+               Clip sonido = AudioSystem.getClip();
+
+               // Se carga con un fichero wav
+               sonido.open(AudioSystem.getAudioInputStream(new File("clicJuego.wav")));
+
+               // Comienza la reproducción
+               sonido.start();
+              
+
+               // Espera mientras se esté reproduciendo.
+               while (sonido.isRunning())
+                   Thread.sleep(1000);
+
+               
+           } catch (IOException | InterruptedException | LineUnavailableException | UnsupportedAudioFileException e) {
+               System.out.println("" + e);
+           }
+    
+        }
     
     
     

@@ -30,7 +30,7 @@ static JuegoNumeros jn = new JuegoNumeros();
 static PalabraEncadenada pe = new PalabraEncadenada();
 	public static void main(String[] args) {
 		
-            hr.reproductorFondo(true);
+            hr.reproductorFondo();
             try{
                     
                 JFrame.setDefaultLookAndFeelDecorated(true);
@@ -152,7 +152,7 @@ static PalabraEncadenada pe = new PalabraEncadenada();
 		try{
 			adJug.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					
+					 hr.reproducirBoton();
 					 jg.interfazJugadores();
 					
 				}
@@ -164,7 +164,7 @@ static PalabraEncadenada pe = new PalabraEncadenada();
 		try{
 			adivinaPalabra.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					
+					hr.reproducirBoton();
 					jp.interfazJuegoPalabras();
 					
 				}
@@ -178,7 +178,7 @@ static PalabraEncadenada pe = new PalabraEncadenada();
 		try{
 			adivinaNum.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					
+					hr.reproducirBoton();
 					jn.interfazJuegoNumeros();
 					
 				}
@@ -190,7 +190,7 @@ static PalabraEncadenada pe = new PalabraEncadenada();
 		try{
 			palabraEncadenada.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					
+					hr.reproducirBoton();
 					pe.interfazPalEnc();
 					
 				}
